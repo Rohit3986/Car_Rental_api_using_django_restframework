@@ -25,3 +25,8 @@ general information for both owner and renter:
 i have cretaed two viewsets CarView and BookingRequestView in views.py which can handle requests for both owner and renter
 i have created custom permissions to handle owner and renter requests
 i have created signals logic to maintain login data of user(owner/renter)
+
+modificication that can be done furhter:
+currently i am saving pending requests and confirm/cancle requests in same table , we can seprate it and make confirm/cancle requests unchangable in order 
+to maintain records.
+a dynamic folder directory to store images in more organized manner , currently i am adding all uploaded images in cars folder.
