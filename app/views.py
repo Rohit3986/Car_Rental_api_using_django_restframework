@@ -58,7 +58,7 @@ class UserProfileView(APIView):
 class CarView(ModelViewSet):
     serializer_class=CarSerializer
     queryset=Car.objects.all()
-    authentication_classes=[BasicAuthentication]
+    #authentication_classes=[BasicAuthentication]
     permission_classes=[CarPermssions]
     
     def get_queryset(self):
@@ -89,7 +89,7 @@ class CarView(ModelViewSet):
 class BookingRequestView(ModelViewSet):
     serializer_class=BookingRequestSerializer
     queryset=BookingRequest.objects.all()
-    authentication_classes=[BasicAuthentication]
+    #authentication_classes=[BasicAuthentication]
     permission_classes=[BookingRequestPermissions]
     
     def get_queryset(self):
@@ -104,12 +104,12 @@ class BookingRequestView(ModelViewSet):
         if len(request.data)>1:
             return Response({'error':["only request_status is editable"]})
         instance = self.get_object()
-        '''print("instance requested to is ",instance.requested_to)
+        
         if instance.requested_to!=request.user:
-            return Response({'error':["only vehicle owner can edit booking request"]})'''
+            return Response({'error':["only vehicle owner can edit booking request"]})
         serializer = self.get_serializer(instance, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
-        #serializer.save()
+        serializer.save()
         self.perform_update(serializer)
         return Response(serializer.data)
 
