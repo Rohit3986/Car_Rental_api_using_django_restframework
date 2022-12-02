@@ -75,7 +75,7 @@ class Car(models.Model):
     car_model=models.CharField(max_length=30)
     colour=models.CharField(max_length=20)
     fuel_type=models.CharField(max_length=4,choices=(("1","petrol"),("2","diesel"),("3","cng"),("4","bio-diesel")))
-    car_images=models.FileField(upload_to="E:\pythonproject\django\django rest framework\VehicleRentalApi\cars")
+    car_images=models.FileField(upload_to="E:\pythonproject\django\django rest framework\VehicleRentalApi\cars",blank=True)
     price_per_hour=models.IntegerField()
     is_available=models.BooleanField()
     owner=models.ForeignKey(default=1,to=User,on_delete=models.CASCADE)

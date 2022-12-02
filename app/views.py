@@ -58,10 +58,11 @@ class UserProfileView(APIView):
 class CarView(ModelViewSet):
     serializer_class=CarSerializer
     queryset=Car.objects.all()
-    authentication_classes=[BasicAuthentication]
+    #authentication_classes=[BasicAuthentication]
     permission_classes=[CarPermssions]
+    
     def get_queryset(self):
-        if self.request.user.id=="1":
+        if self.request.user.user_type=="1":
             return Car.objects.filter(owner_id=self.request.user.id)
         return Car.objects.all()
 
@@ -88,7 +89,7 @@ class CarView(ModelViewSet):
 class BookingRequestView(ModelViewSet):
     serializer_class=BookingRequestSerializer
     queryset=BookingRequest.objects.all()
-    authentication_classes=[SessionAuthentication]
+    #authentication_classes=[BasicAuthentication]
     permission_classes=[BookingRequestPermissions]
     
     def get_queryset(self):

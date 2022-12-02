@@ -36,8 +36,10 @@ class CarSerializer(serializers.ModelSerializer):
         fields=["id","car_model","colour","fuel_type",'price_per_hour',"car_images","is_available"]
 
 
-class BookingRequestSerializer(serializers.HyperlinkedModelSerializer):
+class BookingRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model=BookingRequest
+        fields="__all__"
+
 
 
