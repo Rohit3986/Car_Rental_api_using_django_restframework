@@ -104,7 +104,9 @@ class BookingRequestView(ModelViewSet):
         if len(request.data)>1:
             return Response({'error':["only request_status is editable"]})
         instance = self.get_object()
-        print("instance is ",instance)
+        '''print("instance requested to is ",instance.requested_to)
+        if instance.requested_to!=request.user:
+            return Response({'error':["only vehicle owner can edit booking request"]})'''
         serializer = self.get_serializer(instance, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
         #serializer.save()
@@ -121,9 +123,4 @@ class BookingRequestView(ModelViewSet):
         
     
 
-#login
-{"username":"rohitkashyap","password":"1"}
-
-#signup
-{"username":"mukesh_ambani","password":"mukesh@123","password2":"mukesh@123","email":"mukesh8925@gmail.com","user_type":"2"}
 
